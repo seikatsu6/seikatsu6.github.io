@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epstein Leaks — AI-Powered Analysis of 3.5M Pages</title>
+    <meta name="description" content="Every document. Every connection. Every name. 3.5 million pages of Epstein files analyzed by AI. Search, explore, investigate.">
+    
+    <meta property="og:title" content="Epstein Leaks — The Full Archive. AI-Analyzed.">
+    <meta property="og:description" content="3.5M pages. AI search. Connection graphs. Every name exposed.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Epstein Leaks — 3.5M Pages. AI-Analyzed.">
+    <meta name="twitter:description" content="Congress unseals the files Feb 9. We analyze them all.">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #050505;
+            color: #d0d0d0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ——— NAV ——— */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(5,5,5,0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .logo span { color: #c41e1e; }
+
+        .nav-cta {
+            padding: 10px 24px;
+            background: #c41e1e;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover { background: #e02020; }
+
+        /* ——— HERO ——— */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            background:
+                radial-gradient(ellipse at 50% 0%, 
+                    rgba(196,30,30,0.08) 0%, 
+                    transparent 60%),
+                radial-gradient(ellipse at 80% 50%, 
+                    rgba(196,30,30,0.03) 0%, 
+                    transparent 40%),
+                #050505;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .urgent-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(196,30,30,0.15);
+            border: 1px solid rgba(196,30,30,0.3);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: #ff4444;
+            font-weight: 600;
+            margin-bottom: 30px;
+            position: relative;
+            animation: pulse-border 2s infinite;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(196,30,30,0.3); }
+            50% { border-color: rgba(196,30,30,0.7); }
+        }
+
+        .urgent-badge .dot {
+            width: 8px; height: 8px;
+            background: #ff4444;
+            border-radius: 50%;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            position: relative;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, 
+                #c41e1e, #ff4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #777;
+            max-width: 600px;
+            margin-bottom: 50px;
+            position: relative;
+            font-weight: 300;
+        }
+
+        .hero-sub strong { color: #bbb; font-weight: 500; }
+
+        .stats-row {
+            display: flex;
+            gap: 50px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+        }
+
+        .stat { text-align: center; }
+
+        .stat-num {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #fff;
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-num.red { color: #c41e1e; }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ——— EMAIL FORM ——— */
+        .hero-form {
+            display: flex;
+            gap: 0;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .hero-form input {
+            flex: 1;
+            padding: 16px 20px;
+            font-size: 1rem;
+            border: 1px solid #222;
+            border-right: none;
+            background: #111;
+            color: #fff;
+            border-radius: 8px 0 0 8px;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .hero-form input:focus {
+            border-color: #c41e1e;
+        }
+
+        .hero-form input::placeholder {
+            color: #444;
+        }
+
+        .hero-form button {
+            padding: 16px 28px;
+            font-size: 0.95rem;
+            background: #c41e1e;
+            color: #fff;
+            border: 1px solid #c41e1e;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .hero-form button:hover {
+            background: #e02020;
+        }
+
+        .form-note {
+            font-size: 0.8rem;
+            color: #444;
+            position: relative;
+        }
+
+        .success-msg {
+            display: none;
+            color: #4caf50;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        /* ——— FEATURES ——— */
+        .features {
+            padding: 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .features .section-sub {
+            text-align: center;
+            color: #555;
+            margin-bottom: 60px;
+            font-size: 1.05rem;
+        }
+
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 
+                minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: #0c0c0c;
+            border: 1px solid #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: #333;
+        }
+
+        /* Mockup screens inside cards */
+        .mockup {
+            height: 200px;
+            background: #111;
+            border-bottom: 1px solid #1a1a1a;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mockup-dots {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .mockup-dots span {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: #222;
+        }
+
+        .mockup-dots span:first-child { background: #c41e1e; }
+
+        /* AI Chat mockup */
+        .mock-chat .chat-msg {
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            margin-bottom: 8px;
+            max-width: 80%;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .mock-chat .user-msg {
+            background: #1a1a2e;
+            color: #8888cc;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .mock-chat .ai-msg {
+            background: #1a1a1a;
+            color: #888;
+        }
+
+        .mock-chat .ai-msg .src {
+            color: #c41e1e;
+            font-size: 0.6rem;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* Graph mockup */
+        .mock-graph {
+            position: relative;
+            height: calc(100% - 28px);
+        }
+
+        .mock-graph .node {
+            position: absolute;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.5rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .mock-graph .node.center {
+            width: 48px; height: 48px;
+            border-color: #c41e1e;
+            color: #c41e1e;
+            font-size: 0.55rem;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(196,30,30,0.1);
+        }
+
+        .mock-graph .node.n1{top:15%;left:20%}
+        .mock-graph .node.n2{top:10%;left:65%}
+        .mock-graph .node.n3{top:55%;left:15%}
+        .mock-graph .node.n4{top:65%;left:75%}
+        .mock-graph .node.n5{top:25%;left:80%}
+        .mock-graph .node.n6{top:75%;left:40%}
+
+        .mock-graph line {
+            stroke: #222;
+            stroke-width: 1;
+        }
+
+        /* Search mockup */
+        .mock-search .search-bar {
+            background: #1a1a1a;
+            border: 1px solid #222;
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: #666;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .mock-search .result {
+            padding: 8px;
+            border-bottom: 1px solid #151515;
+            font-size: 0.65rem;
+        }
+
+        .mock-search .result-title {
+            color: #c41e1e;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .mock-search .result-text {
+            color: #555;
+        }
+
+        .mock-search .result-text mark {
+            background: rgba(196,30,30,0.2);
+            color: #ff6666;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        /* Photos mockup */
+        .mock-photos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            height: calc(100% - 28px);
+        }
+
+        .mock-photos .photo {
+            background: #1a1a1a;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mock-photos .photo::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3px 5px;
+            background: rgba(0,0,0,0.7);
+            color: #666;
+            font-size: 0.5rem;
+        }
+
+        /* Alerts mockup */
+        .mock-alerts .alert-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            border-bottom: 1px solid #151515;
+        }
+
+        .mock-alerts .alert-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #c41e1e;
+            flex-shrink: 0;
+        }
+
+        .mock-alerts .alert-dot.green {
+            background: #4caf50;
+        }
+
+        .mock-alerts .alert-text {
+            font-size: 0.65rem;
+            color: #666;
+        }
+
+        .mock-alerts .alert-text strong {
+            color: #999;
+        }
+
+        .mock-alerts .alert-time {
+            font-size: 0.55rem;
+            color: #333;
+            margin-left: auto;
+            white-space: nowrap;
+        }
+
+        /* Investigate mockup */
+        .mock-investigate {
+            height: calc(100% - 28px);
+        }
+
+        .mock-investigate .board-title {
+            font-size: 0.7rem;
+            color: #555;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mock-investigate .board-title .badge {
+            background: rgba(196,30,30,0.15);
+            color: #c41e1e;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.5rem;
+        }
+
+        .mock-investigate .note {
+            background: #1a1a1a;
+            border: 1px solid #222;
+            border-left: 3px solid #c41e1e;
+            padding: 6px 8px;
+            margin-bottom: 6px;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.6rem;
+            color: #555;
+        }
+
+        .feature-card-body {
+            padding: 24px;
+        }
+
+        .feature-card-body h3 {
+            color: #fff;
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .feature-card-body p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgba(196,30,30,0.1);
+            color: #c41e1e;
+            font-size: 0.7rem;
+            border-radius: 4px;
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        /* ——— BOTTOM CTA ——— */
+        .bottom-cta {
+            padding: 100px 20px;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at 50% 100%, 
+                    rgba(196,30,30,0.06) 0%, 
+                    transparent 60%),
+                #050505;
+            border-top: 1px solid #111;
+        }
+
+        .bottom-cta h2 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .bottom-cta p {
+            color: #555;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            font-size: 1rem;
+        }
+
+        /* ——— FOOTER ——— */
+        footer {
+            padding: 30px;
+            text-align: center;
+            color: #333;
+            font-size: 0.75rem;
+            border-top: 1px solid #111;
+        }
+
+        /* ——— RESPONSIVE ——— */
+        @media (max-width: 600px) {
+            nav { padding: 15px 20px; }
+            .logo { font-size: 1rem; }
+            .stats-row { gap: 30px; }
+            .stat-num { font-size: 2rem; }
+            .hero-form { flex-direction: column; }
+            .hero-form input { 
+                border-radius: 8px; 
+                border-right: 1px solid #222; 
+            }
+            .hero-form button { border-radius: 8px; }
+            .feature-cards { 
+                grid-template-columns: 1fr; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">EPSTEIN<span>LEAKS</span></div>
+    <a href="#signup" class="nav-cta">Get Early Access</a>
+</nav>
+
+<section class="hero">
+    <div class="urgent-badge">
+        <span class="dot"></span>
+        Feb 9: Congress unseals unredacted files
+    </div>
+
+    <h1>
+        Every Document.<br>
+        Every <span class="highlight">Connection</span>.<br>
+        Every Name.
+    </h1>
+
+    <p class="hero-sub">
+        <strong>3.5 million pages</strong> of Epstein case 
+        files — analyzed by AI. Search any name, explore 
+        hidden connections, uncover what was meant 
+        to stay buried.
+    </p>
+
+    <div class="stats-row">
+        <div class="stat">
+            <span class="stat-num">3.5M</span>
+            <span class="stat-label">Pages</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num red">947</span>
+            <span class="stat-label">Names Found</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">Connections</span>
+        </div>
+    </div>
+
+    <form class="hero-form" id="heroForm">
+        <input type="email" placeholder="your@email.com" 
+               required id="heroEmail">
+        <button type="submit">Get Access First</button>
+    </form>
+    <p class="form-note">
+        Free early access. We'll email you the moment 
+        it's live.
+    </p>
+    <p class="success-msg" id="heroSuccess">
+        ✓ You're in. We'll notify you at launch.
+    </p>
+</section>
+
+<section class="features">
+    <h2>What We're Building</h2>
+    <p class="section-sub">
+        Tools that would take investigators months — 
+        available to everyone in seconds.
+    </p>
+
+    <div class="feature-cards">
+
+        <!-- AI CHAT -->
+        <div class="feature-card">
+            <div class="mockup">
+                <div class="mockup-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="mock-chat">
+                    <div class="chat-msg user-msg">
+                        Who visited the island in March 2005?
+                    </div>
+                    <div class="chat-msg ai-msg">
+                        According to flight logs (Doc 
+                        #JE-4401, p.12), the following 
+                        individuals were recorded on 
+                        flights to St. Thomas between 
+                        March 1-31, 2005:
+                        <span class="src">
+                            ■ Source: Exhibit 47, 
+                            Deposition Records
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-card-body">
+                <h3>AI-Powered Q&A</h3>
+                <p>Ask anything about the case. Get answers 
+                   with exact document citations. No 
+                   hallucinations — every claim links 
+                   to a source page.</p>
+                <span class="feature-tag">RAG Technology</span>
+            </div>
+        </div>
+
+        <!-- CONNECTION GRAPH -->
+        <div class="feature-card">
+            <div class="mockup">
+                <div class="mockup-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="mock-graph">
+                    <svg width="100%" height="100%" 
+                         style="position:absolute;
+                                top:0;left:0">
+                        <line x1="50%" y1="50%" 
+                              x2="20%" y2="15%"/>
+                        <line x1="50%" y1="50%" 
+                              x2="65%" y2="10%"/>
+                        <line x1="50%" y1="50%" 
+                              x2="15%" y2="55%"/>
+                        <line x1="50%" y1="50%" 
+                              x2="75%" y2="65%"/>
+                        <line x1="50%" y1="50%" 
+                              x2="80%" y2="25%"/>
+                        <line x1="50%" y1="50%" 
+                              x2="40%" y2="75%"/>
+                        <line x1="20%" y1="15%" 
+                              x2="65%" y2="10%"/>
+                        <line x1="75%" y1="65%" 
+                              x2="80%" y2="25%"/>
+                    </svg>
+                    <div class="node center">J.E.</div>
+                    <div class="node n1">G.M.</div>
+                    <div class="node n2">???</div>
+                    <div class="node n3">A.D.</div>
+                    <div class="node n4">???</div>
+                    <div class="node n5">???</div>
+                    <div class="node n6">L.B.</div>
+                </div>
+            </div>
+            <div class="feature-card-body">
+                <h3>Connection Graph</h3>
+                <p>Visual map of relationships between 
+                   people, locations, dates, and events. 
+                   See patterns invisible in raw text.</p>
+                <span class="feature-tag">
+                    Interactive Network
+                </span>
+            </div>
+        </div>
+
+        <!-- DOCUMENT SEARCH -->
+        <div class="feature-card">
+            <div class="mockup">
+                <div class="mockup-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="mock-search">
+                    <div class="search-bar">
+                        &gt; searching: "private jet" + 
+                        "2004"...
+                    </div>
+                    <div class="result">
+                        <div class="result-title">
+                            Flight Log #JE-2847.pdf 
+                            — Page 4
+                        </div>
+                        <div class="result-text">
+                            ...departed Teterboro on 
+                            <mark>private jet</mark> 
+                            N908JE, manifest lists 
+                            passengers for 
+                            <mark>2004</mark>-11...
+                        </div>
+                    </div>
+                    <div class="result">
+                        <div class="result-title">
+                            Deposition Exhibit 114.pdf 
+                            — Page 22
+                        </div>
+                        <div class="result-text">
+                            ...confirmed travel via 
+                            <mark>private jet</mark> 
+                            on multiple occasions 
+                            during <mark>2004</mark>...
+                        </div>
+                    </div>
+                    <div class="result">
+                        <div class="result-title">
+                            FBI Report #0847.pdf 
+                            — Page 7
+                        </div>
+                        <div class="result-text">
+                            ...surveillance of 
+                            <mark>private jet</mark> 
+                            movements, Q3 
+                            <mark>2004</mark>...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-card-body">
+                <h3>Full-Text Search</h3>
+                <p>Search across all 3.5 million pages 
+                   by name, date, location, or any 
+                   keyword. Instant results with 
+                   context and page references.</p>
+                <span class="feature-tag">
+                    3.5M Pages Indexed
+                </span>
+            </div>
+        </div>
+
+        <!-- ALERTS -->
+        <div class="feature-card">
+            <div class="mockup">
+                <div class="mockup-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="mock-alerts">
+                    <div class="alert-item">
+                        <span class="alert-dot"></span>
+                        <span class="alert-text">
+                            New mention of 
+                            <strong>[Name]</strong> found 
+                            in unsealed batch #12
+                        </span>
+                        <span class="alert-time">2m ago</span>
+                    </div>
+                    <div class="alert-item">
+                        <span class="alert-dot green"></span>
+                        <span class="alert-text">
+                            <strong>412 new pages</strong> 
+                            added to the archive
+                        </span>
+                        <span class="alert-time">
+                            1h ago
+                        </span>
+                    </div>
+                    <div class="alert-item">
+                        <span class="alert-dot"></span>
+                        <span class="alert-text">
+                            Connection discovered: 
+                            <strong>[Name]</strong> ↔ 
+                            <strong>[Name]</strong>
+                        </span>
+                        <span class="alert-time">
+                            3h ago
+                        </span>
+                    </div>
+                    <div class="alert-item">
+                        <span class="alert-dot green"></span>
+                        <span class="alert-text">
+                            Previously redacted section 
+                            now <strong>unredacted</strong>
+                        </span>
+                        <span class="alert-time">
+                            5h ago
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="feature-card-body">
+                <h3>Real-Time Alerts</h3>
+                <p>Track any name. Get notified instantly 
+                   when new documents mention them, 
+                   when redactions are lifted, or when 
+                   new connections emerge.</p>
+                <span class="feature-tag">
+                    Personalized Tracking
+                </span>
+            </div>
+        </div>
+
+        <!-- PHOTO ARCHIVE -->
+        <div class="feature-card">
+            <div class="mockup">
+                <div class="mockup-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="mock-photos">
+                    <div class="photo" 
+                         data-label="NY, 2003"></div>
+                    <div class="photo" 
+                         data-label="Flight"></div>
+                    <div class="photo" 
+                         data-label="Event"></div>
+                    <div class="photo" 
+                         data-label="Island"></div>
+                    <div class="photo" 
+                         data-label="Mansion"></div>
+                    <div class="photo" 
+                         data-label="Docs"></div>
+                </div>
+            </div>
+            <div class="feature-card-body">
+                <h3>Photo Archive</h3>
+                <p>Every photograph from the case files, 
+                   tagged and searchable. Who's in the 
+                   photo, where it was taken, and which 
+                   document it came from.</p>
+                <span class="feature-tag">
+                    Tagged & Searchable
+                </span>
+            </div>
+        </div>
+
+        <!-- COMMUNITY INVESTIGATIONS -->
+        <div class="feature-card">
+            <div class="mockup">
+                <div class="mockup-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="mock-investigate">
+                    <div class="board-title">
+                        Financial Trail Investigation
+                        <span class="badge">
+                            Verified Journalist
+                        </span>
+                    </div>
+                    <div class="note">
+                        Wire transfers from JP Morgan 
+                        account ending in **4401 match 
+                        dates of island visits — see 
+                        Doc #2847
+                    </div>
+                    <div class="note">
+                        Cross-referenced with flight 
+                        logs: 14 of 17 transfers occur 
+                        within 48 hours of logged 
+                        flights
+                    </div>
+                    <div class="note">
+                        Open question: Who authorized 
+                        transfers after account was 
+                        flagged by compliance?
+                    </div>
+                </div>
+            </div>
+            <div class="feature-card-body">
+                <h3>Community Investigations</h3>
+                <p>Create investigation boards, share 
+                   findings, collaborate. Verified 
+                   journalists get a special badge. 
+                   Crowdsourced truth.</p>
+                <span class="feature-tag">
+                    Open Source Intel
+                </span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="bottom-cta" id="signup">
+    <h2>The files are dropping.<br>Don't miss it.</h2>
+    <p>Join the waitlist. Be first to search the 
+       full archive when we launch.</p>
+    
+    <form class="hero-form" id="bottomForm" 
+          style="justify-content:center">
+        <input type="email" placeholder="your@email.com" 
+               required id="bottomEmail">
+        <button type="submit">Join Waitlist</button>
+    </form>
+    <p class="form-note" id="bottomNote">
+        No spam. Just a launch notification.
+    </p>
+    <p class="success-msg" id="bottomSuccess">
+        ✓ You're in. We'll notify you at launch.
+    </p>
+</section>
+
+<footer>
+    All documents sourced from publicly available 
+    court records. This project presents information 
+    from official filings and does not make 
+    independent accusations.
+    <br><br>
+    &copy; 2025 EpsteinLeaks
+</footer>
+
+<script>
+function handleSubmit(formId, emailId, successId, 
+                       noteId) {
+    document.getElementById(formId)
+        .addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document
+            .getElementById(emailId).value;
+
+        // Google Form submission
+        const GOOGLE_FORM_URL = 
+            'ТВОЯ_ССЫЛКА_СЮДА';
+        const ENTRY_ID = 
+            'entry.ТВОЙ_ID_СЮДА';
+
+        fetch(GOOGLE_FORM_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 
+                'application/x-www-form-urlencoded'
+            },
+            body: ENTRY_ID + '=' + 
+                  encodeURIComponent(email)
+        });
+
+        document.getElementById(formId)
+            .style.display = 'none';
+        document.getElementById(successId)
+            .style.display = 'block';
+        if (noteId) {
+            document.getElementById(noteId)
+                .style.display = 'none';
+        }
+    });
+}
+
+handleSubmit('heroForm', 'heroEmail', 
+             'heroSuccess', null);
+handleSubmit('bottomForm', 'bottomEmail', 
+             'bottomSuccess', 'bottomNote');
+</script>
+
+</body>
+</html>
