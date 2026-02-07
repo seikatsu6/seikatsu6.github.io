@@ -1,0 +1,1 @@
+# seikatsu6.github.io
